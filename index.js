@@ -41,10 +41,17 @@ let QUESTIONS = [
   }
 ];
 
+let totalScore = 0;
+let questionCount = 0;
 
 function handleStartBtn(){
+  $('.start-btn').on('click', function(){
+      $('.start-btn').toggleClass('hide');
+      $('.intro').toggleClass('hide');
 
+  });
 
+  console.log('Started!')
 }
 
 function handleSetQuestion(){
@@ -78,3 +85,5 @@ function handleClicks(){
   handleRestart();
 
 }
+
+$(handleClicks);
