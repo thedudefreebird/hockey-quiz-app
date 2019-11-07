@@ -42,7 +42,7 @@ let STORE = [
 ];
 
 let totalScore = 0;
-let questionCount = 1;
+let questionCount = 0;
 let i = 0;
 
 function handleStartBtn(){
