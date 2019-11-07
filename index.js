@@ -1,4 +1,4 @@
-let QUESTIONS = [
+let STORE = [
   {
     question: 'Who is known to be Mr. Hockey?',
     answers: ['Gordie Howe', 'Wayne Gretzky', 'Mario Lemieux', 'Mark Messier'],
@@ -42,7 +42,8 @@ let QUESTIONS = [
 ];
 
 let totalScore = 0;
-let questionCount = 0;
+let questionCount = 1;
+let i = 0;
 
 function handleStartBtn(){
   $('.start-btn').on('click', function(){
@@ -56,13 +57,17 @@ function handleStartBtn(){
 
 function handleSetQuestion(){
   //create a var to hold html string (not global)
-
   //header tag with QUESTIONS[questionCount].question
     //add to html string
-
+  let questionToShow = STORE[questionCount].question;
+  $('#question-container').show();
+  $('#question').append(questionToShow);
   //for loop (iterate 4 times) //(let i = 0; i < 4; i++)
-    //add to html string, QUESTIONS[questionCount].answers
-
+    //add to html string, STORE[questionCount].answers
+  // for (let i = 0; i < 4; i++){
+  //   let answerToShow = STORE[questionCount].answers;
+  //   $('.btn-grid').append(answerToShow);
+  // };
   //submit button
 
   //target DOM .append(html string from above)
