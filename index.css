@@ -31,6 +31,12 @@ body {
   align-items: center;
 }
 
+#question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-grid {
   display: flex;
   flex-direction: column;
