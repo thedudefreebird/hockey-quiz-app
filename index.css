@@ -35,6 +35,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 35px;
 }
 
 .btn-grid {
@@ -43,6 +44,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+  font-size: 25px;
 }
 
 .btn {
