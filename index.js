@@ -56,21 +56,22 @@ function handleStartBtn(){
 }
 
 function handleSetQuestion(){
-  //create a var to hold html string (not global)
-  //header tag with QUESTIONS[questionCount].question
-    //add to html string
   let questionToShow = STORE[questionCount].question;
   $('#question-container').show();
   $('#question').append(questionToShow);
-  //for loop (iterate 4 times) //(let i = 0; i < 4; i++)
-    //add to html string, STORE[questionCount].answers
-  // for (let i = 0; i < 4; i++){
-  //   let answerToShow = STORE[questionCount].answers;
-  //   $('.btn-grid').append(answerToShow);
-  // };
+  $('#answerZero').append(STORE[questionCount].answers[0]);
+  $('#answerOne').append(STORE[questionCount].answers[1]);
+  $('#answerTwo').append(STORE[questionCount].answers[2]);
+  $('#answerThree').append(STORE[questionCount].answers[3]);
+  $('#labelZero').append(STORE[questionCount].answers[0]);
+  $('#labelOne').append(STORE[questionCount].answers[1]);
+  $('#labelTwo').append(STORE[questionCount].answers[2]);
+  $('#labelThree').append(STORE[questionCount].answers[3]);
   //submit button
 
+
   //target DOM .append(html string from above)
+
 
   handleAnswerSelection();
 }
