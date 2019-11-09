@@ -50,12 +50,14 @@ function handleStartBtn(){
       $('.start-btn').toggleClass('hide');
       $('.intro').toggleClass('hide');
       handleSetQuestion();
+      console.log('Started!');
   });
 
-  console.log('Started!')
+
 }
 
 function handleSetQuestion(){
+  //setting question and answers
   let questionToShow = STORE[questionCount].question;
   $('#question-container').show();
   $('#question').append(questionToShow);
@@ -68,18 +70,27 @@ function handleSetQuestion(){
   $('#labelTwo').append(STORE[questionCount].answers[2]);
   $('#labelThree').append(STORE[questionCount].answers[3]);
   //submit button
+  $('#subBtn').on('click', function(){
+    event.preventDefault();
+    handleAnswerSelection();
+  });
 
 
-  //target DOM .append(html string from above)
-
-
-  handleAnswerSelection();
+  //handleAnswerSelection();
 }
 
 function handleAnswerSelection(){
   //event listner for submit button being clicked
+  $('#subBtn').on('click', function(){
+    event.preventDefault();
+    let answerCorrect = STORE[questionCount].correctAnswer;
+    $('.btn-grid').hide();
+    $('#question').append(' ')
+    $('#question').append(`The correct answer is: ${answerCorrect}`);
 
-  //event.preventDefault
+
+
+  });
 
   //access user input and compare to answer in quesitons array
 
