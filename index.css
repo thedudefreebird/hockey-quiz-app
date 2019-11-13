@@ -64,6 +64,13 @@ body {
   padding: 10px 20px;
 }
 
+.submit-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
 .controls {
     display: flex;
     justify-content: center;
