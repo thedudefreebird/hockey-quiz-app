@@ -81,26 +81,27 @@ function handleAnswerSelection(){
   $('.btn-grid').hide();
   $('#question').hide();
   //access user input and compare to answer in quesitons array
-
+  $('.next-btn').toggleClass('hide')
   handleGrading();
 }
 
 
 function handleGrading(){
+  let userAnswer = $("input[name='answer']:checked").val();
   let correctAnswer = STORE[questionCount].correctAnswer;
-  let userAnswer = $('input[type=radio]:checked').val();
   //if statment to verify if the correct answer was selected
   console.log(correctAnswer);
   console.log(userAnswer);
 
-  // if(userAnswer == correctAnswer) {
-  //   $('#correctFeedback').show();
-  //   quesitonCount++;
-  //   totalScore++;
-  // }
-  // else {
-  //   $('#wrongFeedback').show()
-  // }
+  if(userAnswer == correctAnswer) {
+    $('#correctFeedback').show();
+    quesitonCount++;
+    totalScore++;
+  }
+  else {
+    $('#wrongFeedback').show()
+      questionCount++;
+  }
 
 
     //if true score++ quesitonCount++
@@ -112,7 +113,11 @@ function handleGrading(){
 
 function handleNextBtn(){
   //event listener
-
+  $('#nextBtn').on('click', function(){
+    event.preventDefault();
+    handleSetQuestion();
+    console.log(handleSetQuestion);
+  });
   //set new question.
   //remove feedback from DOM(.append and empty/remove)
 
