@@ -43,7 +43,6 @@ let STORE = [
 
 let totalScore = 0;
 let questionCount = 0;
-let i = 0;
 
 function handleStartBtn(){
   $('.start-btn').on('click', function(){
@@ -75,40 +74,45 @@ function handleSetQuestion(){
     handleAnswerSelection();
   });
 
-
-  //handleAnswerSelection();
 }
 
 function handleAnswerSelection(){
   //event listner for submit button being clicked
-  $('#subBtn').on('click', function(){
-    event.preventDefault();
-    let answerCorrect = STORE[questionCount].correctAnswer;
-    $('.btn-grid').hide();
-    $('#question').append(' ')
-    $('#question').append(`The correct answer is: ${answerCorrect}`);
-
-
-
-  });
-
+  $('.btn-grid').hide();
+  $('#question').hide();
   //access user input and compare to answer in quesitons array
-
 
   handleGrading();
 }
 
+
 function handleGrading(){
+  let correctAnswer = STORE[questionCount].correctAnswer;
+  let userAnswer = $('input[type=radio]:checked').val();
   //if statment to verify if the correct answer was selected
+  console.log(correctAnswer);
+  console.log(userAnswer);
+
+  // if(userAnswer == correctAnswer) {
+  //   $('#correctFeedback').show();
+  //   quesitonCount++;
+  //   totalScore++;
+  // }
+  // else {
+  //   $('#wrongFeedback').show()
+  // }
+
+
     //if true score++ quesitonCount++
       //Correct! .append
-
     //remove quesiton, set next question and include next button(event listner)
+
     handleNextBtn();
 }
 
 function handleNextBtn(){
   //event listener
+
   //set new question.
   //remove feedback from DOM(.append and empty/remove)
 
