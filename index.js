@@ -60,14 +60,18 @@ function handleSetQuestion(){
   let questionToShow = STORE[questionCount].question;
   $('#question-container').show();
   $('#question').append(questionToShow);
-  $('#answerZero').append(STORE[questionCount].answers[0]);
-  $('#answerOne').append(STORE[questionCount].answers[1]);
-  $('#answerTwo').append(STORE[questionCount].answers[2]);
-  $('#answerThree').append(STORE[questionCount].answers[3]);
-  $('#labelZero').append(STORE[questionCount].answers[0]);
-  $('#labelOne').append(STORE[questionCount].answers[1]);
-  $('#labelTwo').append(STORE[questionCount].answers[2]);
-  $('#labelThree').append(STORE[questionCount].answers[3]);
+  $('#answer-radio').append(`
+    <input type="radio" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
+    <label for="answerZero" id="labelZero">${STORE[questionCount].answers[0]}</label>
+    <input type="radio" name="answer" value=${STORE[questionCount].answers[1]} id="answerOne">
+    <label for="answerOne" id="labelOne">${STORE[questionCount].answers[1]}</label>
+    <input type="radio" name="answer" value=${STORE[questionCount].answers[2]} id="answerTwo">
+    <label for="answerTwo" id="labelTwo">${STORE[questionCount].answers[2]}</label>
+    <input type="radio" name="answer" value=${STORE[questionCount].answers[3]} id="answerThree">
+    <label for="answerThree" id="labelThree">${STORE[questionCount].answers[3]}</label>
+    <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
+    `);
+
   //submit button
   $('#subBtn').on('click', function(){
     event.preventDefault();
@@ -95,7 +99,7 @@ function handleGrading(){
 
   if(userAnswer == correctAnswer) {
     $('#correctFeedback').show();
-    quesitonCount++;
+    questionCount++;
     totalScore++;
   }
   else {
@@ -113,9 +117,12 @@ function handleGrading(){
 
 function handleNextBtn(){
   //event listener
-  $('#nextBtn').on('click', function(){
+  $('#next-btn').on('click', function(){
     event.preventDefault();
+    $('.btn-grid').show();
+    $('#question').show();
     handleSetQuestion();
+
     console.log(handleSetQuestion);
   });
   //set new question.
