@@ -58,7 +58,6 @@ function handleStartBtn(){
 }
 
 function handleSetQuestion(){
-  //setting question and answers
   let questionToShow = STORE[questionCount].question;
   $('#question-container').show();
   $('#question').append(questionToShow);
@@ -79,20 +78,13 @@ function handleSetQuestion(){
   $('#subBtn').on('click', function(){
     event.preventDefault();
     console.log('Submit Clikced');
-    handleAnswerSelection();
+    $('.controls').append(`
+      <button id="next-btn" class="next-btn btn">Next</button>
+      `);
+    handleGrading();
   });
 
 }
-
-function handleAnswerSelection(){
-  //event listner for submit button being clicked
-  $('.btn-grid').hide();
-  $('#question').hide();
-  //access user input and compare to answer in quesitons array
-  $('.next-btn').toggleClass('hide')
-  handleGrading();
-}
-
 
 function handleGrading(){
   let userAnswer = $("input[name='answer']:checked").val();
@@ -102,23 +94,34 @@ function handleGrading(){
   console.log(userAnswer);
 
   if(userAnswer == correctAnswer) {
-    $('#correctFeedback').show();
+    $('.feedback').append(`
+      <div id="correctFeedback" class="correct">
+        <h2 class="correct">You got the correct answer!</h2>
+        <h3 class="correct">That was a great choice!</h3>
+      </div>
+      `);
     questionCount++;
     totalScore++;
     console.log('Correct');
     console.log(questionCount);
     console.log(totalScore);
+    $('#question').empty('');
+    $('#answer-radio').empty('');
+
   }
   else {
-    $('#wrongFeedback').show()
+    $('.feedback').append(`
+      <div id="wrongFeedback" class="wrong">
+        <h2 class="wrong">You got the wrong answer!</h2>
+        <h3 class="wrong">You'll get it next time!</h3>
+      </div>
+      `);
       questionCount++;
       console.log('Wrong');
+      console.log(questionCount);
+      $('#question').empty('');
+      $('#answer-radio').empty('');
   }
-
-
-    //if true score++ quesitonCount++
-      //Correct! .append
-    //remove quesiton, set next question and include next button(event listner)
 
     handleNextBtn();
 }
@@ -130,14 +133,14 @@ function handleNextBtn(){
     $('#question-container').show();
     $('#question').empty('');
     $('#answer-radio').empty('');
+    $('.feedback').empty('');
+    $('#next-btn').remove('');
     handleSetQuestion();
   });
   //set new question.
   //remove feedback from DOM(.append and empty/remove)
-  $('.btn-grid').show();
-  $('#question').show();
   //access user input and compare to answer in quesitons array
-  $('.next-btn').toggleClass('hide')
+
 }
 
 function handleRestart(){
