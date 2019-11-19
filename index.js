@@ -5,7 +5,7 @@ let STORE = [
     correctAnswer: 'Gordie Howe'
   },
   {
-    question: 'How many games are in a regular hockey season? (NOT including playoffs)',
+    question: 'How many games are in a regular hockey season? NOT including playoffs',
     answers: ['50 games', '110 games', '82 games', '90 games'],
     correctAnswer: '82 games'
   },
@@ -50,6 +50,8 @@ function handleStartBtn(){
       $('.intro').toggleClass('hide');
       handleSetQuestion();
       console.log('Started!');
+      console.log(`Total Score is: ${totalScore}`);
+      console.log(`Current question is: ${questionCount}`);
   });
 
 
@@ -72,9 +74,11 @@ function handleSetQuestion(){
     <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
     `);
 
+
   //submit button
   $('#subBtn').on('click', function(){
     event.preventDefault();
+    console.log('Submit Clikced');
     handleAnswerSelection();
   });
 
@@ -101,10 +105,14 @@ function handleGrading(){
     $('#correctFeedback').show();
     questionCount++;
     totalScore++;
+    console.log('Correct');
+    console.log(questionCount);
+    console.log(totalScore);
   }
   else {
     $('#wrongFeedback').show()
       questionCount++;
+      console.log('Wrong');
   }
 
 
@@ -119,15 +127,17 @@ function handleNextBtn(){
   //event listener
   $('#next-btn').on('click', function(){
     event.preventDefault();
-    $('.btn-grid').show();
-    $('#question').show();
+    $('#question-container').show();
+    $('#question').empty('');
+    $('#answer-radio').empty('');
     handleSetQuestion();
-
-    console.log(handleSetQuestion);
   });
   //set new question.
   //remove feedback from DOM(.append and empty/remove)
-
+  $('.btn-grid').show();
+  $('#question').show();
+  //access user input and compare to answer in quesitons array
+  $('.next-btn').toggleClass('hide')
 }
 
 function handleRestart(){
