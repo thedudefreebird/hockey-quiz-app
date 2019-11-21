@@ -64,11 +64,11 @@ function handleSetQuestion(){
   $('#answer-radio').append(`
     <input type="radio" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
     <label for="answerZero" id="labelZero">${STORE[questionCount].answers[0]}</label>
-    <input type="radio" name="answer" value=${STORE[questionCount].answers[1]} id="answerOne">
+    <input type="radio" name="answer" value="${STORE[questionCount].answers[1]}" id="answerOne">
     <label for="answerOne" id="labelOne">${STORE[questionCount].answers[1]}</label>
-    <input type="radio" name="answer" value=${STORE[questionCount].answers[2]} id="answerTwo">
+    <input type="radio" name="answer" value="${STORE[questionCount].answers[2]}" id="answerTwo">
     <label for="answerTwo" id="labelTwo">${STORE[questionCount].answers[2]}</label>
-    <input type="radio" name="answer" value=${STORE[questionCount].answers[3]} id="answerThree">
+    <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
     <label for="answerThree" id="labelThree">${STORE[questionCount].answers[3]}</label>
     <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
     `);
