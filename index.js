@@ -52,6 +52,7 @@ function handleStartBtn(){
       console.log('Started!');
       console.log(`Total Score is: ${totalScore}`);
       console.log(`Current question is: ${questionCount}`);
+
   });
 
 
@@ -71,6 +72,9 @@ function handleSetQuestion(){
     <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
     <label for="answerThree" id="labelThree">${STORE[questionCount].answers[3]}</label>
     <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
+    `);
+  $('.score').append(`
+    <h2>${totalScore}/8<h2>
     `);
 
 
@@ -102,6 +106,9 @@ function handleGrading(){
       `);
     questionCount++;
     totalScore++;
+    // $('.score').append(`
+    //   <h2>${totalScore}/8<h2>
+    //   `);
     console.log('Correct');
     console.log(questionCount);
     console.log(totalScore);
