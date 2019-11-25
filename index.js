@@ -49,6 +49,7 @@ function handleStartBtn(){
       $('.start-btn').toggleClass('hide');
       $('.intro').toggleClass('hide');
       handleSetQuestion();
+
       console.log('Started!');
       console.log(`Total Score is: ${totalScore}`);
       console.log(`Current question is: ${questionCount}`);
@@ -59,6 +60,8 @@ function handleStartBtn(){
 }
 
 function handleSetQuestion(){
+  if(questionCount < STORE.length){
+
   let questionToShow = STORE[questionCount].question;
   $('#question-container').show();
   $('#question').append(questionToShow);
@@ -73,6 +76,10 @@ function handleSetQuestion(){
     <label for="answerThree" id="labelThree">${STORE[questionCount].answers[3]}</label>
     <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
     `);
+  } else {
+    handleRestart();
+  };
+
   $('.score').append(`
     <h2>${totalScore}/8<h2>
     `);
@@ -93,7 +100,6 @@ function handleSetQuestion(){
 function handleGrading(){
   let userAnswer = $("input[name='answer']:checked").val();
   let correctAnswer = STORE[questionCount].correctAnswer;
-  //if statment to verify if the correct answer was selected
   console.log(correctAnswer);
   console.log(userAnswer);
 
@@ -101,14 +107,12 @@ function handleGrading(){
     $('.feedback').append(`
       <div id="correctFeedback" class="correct">
         <h2 class="correct">You got the correct answer!</h2>
-        <h3 class="correct">That was a great choice!</h3>
+        <h2 class="correct">That was a great choice!</h2>
+        <img src="images/goal-light.jpg" alt="hockey goal light" class="correctImage">
       </div>
       `);
     questionCount++;
     totalScore++;
-    // $('.score').append(`
-    //   <h2>${totalScore}/8<h2>
-    //   `);
     console.log('Correct');
     console.log(questionCount);
     console.log(totalScore);
@@ -120,7 +124,8 @@ function handleGrading(){
     $('.feedback').append(`
       <div id="wrongFeedback" class="wrong">
         <h2 class="wrong">You got the wrong answer!</h2>
-        <h3 class="wrong">You'll get it next time!</h3>
+        <h2 class="wrong">You'll get it next time!</h2>
+        <img src="images/ref-calling-pen.jpg" alt="referee calling penalty" class="wrongImage">
       </div>
       `);
       questionCount++;
@@ -144,21 +149,39 @@ function handleNextBtn(){
     $('#next-btn').remove('');
     handleSetQuestion();
   });
-  //set new question.
-  //remove feedback from DOM(.append and empty/remove)
-  //access user input and compare to answer in quesitons array
+
+  $('.score').empty(``);
 
 }
 
 function handleRestart(){
+  $('.feedback').append(`
+    <div id="finalScore" class="final">
+      <h2 class="final">Congratulations!</h2>
+      <h2 class="final">Your Final Score is ${totalScore}!</h2>
+    </div>
+    `);
+  $('.controls').append(`
+    <button id="restart-btn" class="restart-btn btn">restart</button>
+    `);
 
+  $('#restart-btn').on('click', function(){
+    event.preventDefault();
+    handleStartBtn();
+    $('.score').empty(``);
+
+    questionCount = 0;
+    totalScore = 0;
+    console.log(questionCount);
+    console.log(totalScore);
+  });
 
 }
 
 function handleClicks(){
   handleStartBtn();
   handleNextBtn();
-  handleRestart();
+  //handleRestart();
 
 }
 
