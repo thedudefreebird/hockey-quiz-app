@@ -96,6 +96,15 @@ body {
   padding: 10px;
 }
 
+.finalImage {
+  width: 600px;
+  height: 300px;
+  max-width: 80%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .next-btn {
   display: flex;
   justify-content: center;
