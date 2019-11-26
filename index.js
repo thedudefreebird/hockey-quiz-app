@@ -171,6 +171,7 @@ function handleRestart(){
       <h2 class="final">Congratulations!</h2>
       <h2 class="final">Your Final Score is ${totalScore}/8!</h2>
       <h2 class="final">Your Shooting Percentage was ${percentScore}%</h2>
+      <img class="finalImage" src="images/final-feedback-photo.jpg" alt="USA Womans Hockey team winning Gold by Maddie Meyer">
     </div>
     `);
   $('.controls').append(`
