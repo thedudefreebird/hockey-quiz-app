@@ -45,9 +45,15 @@ let totalScore = 0;
 let questionCount = 0;
 
 function handleStartBtn(){
+  $('.controls').append(`
+    <button id="start-btn" class="start-btn btn">Start</button>
+    `);
+  $('.intro').append(`
+    <h1>Welcome! Let's test your hockey knowledge!</h1>
+    `);
   $('.start-btn').on('click', function(){
-      $('.start-btn').toggleClass('hide');
-      $('.intro').toggleClass('hide');
+      $('.start-btn').remove();
+      $('.intro').empty('');
       handleSetQuestion();
 
       console.log('Started!');
@@ -61,28 +67,31 @@ function handleStartBtn(){
 
 function handleSetQuestion(){
   if(questionCount < STORE.length){
+    $('.score').append(`
+      <h2>${totalScore}/8<h2>
+      `);
 
-  let questionToShow = STORE[questionCount].question;
-  $('#question-container').show();
-  $('#question').append(questionToShow);
-  $('#answer-radio').append(`
-    <input type="radio" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
-    <label for="answerZero" id="labelZero" class="label">${STORE[questionCount].answers[0]}</label>
-    <input type="radio" name="answer" value="${STORE[questionCount].answers[1]}" id="answerOne">
-    <label for="answerOne" id="labelOne" class="label">${STORE[questionCount].answers[1]}</label>
-    <input type="radio" name="answer" value="${STORE[questionCount].answers[2]}" id="answerTwo">
-    <label for="answerTwo" id="labelTwo" class="label">${STORE[questionCount].answers[2]}</label>
-    <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
-    <label for="answerThree" id="labelThree" class="label">${STORE[questionCount].answers[3]}</label>
-    <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
-    `);
+    let questionToShow = STORE[questionCount].question;
+    $('#question-container').show();
+    $('#question').append(questionToShow);
+    $('#answer-radio').append(`
+      <input type="radio" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
+      <label for="answerZero" id="labelZero" class="label">${STORE[questionCount].answers[0]}</label>
+      <input type="radio" name="answer" value="${STORE[questionCount].answers[1]}" id="answerOne">
+      <label for="answerOne" id="labelOne" class="label">${STORE[questionCount].answers[1]}</label>
+      <input type="radio" name="answer" value="${STORE[questionCount].answers[2]}" id="answerTwo">
+      <label for="answerTwo" id="labelTwo" class="label">${STORE[questionCount].answers[2]}</label>
+      <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
+      <label for="answerThree" id="labelThree" class="label">${STORE[questionCount].answers[3]}</label>
+      <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
+      `);
   } else {
     handleRestart();
   };
 
-  $('.score').append(`
-    <h2>${totalScore}/8<h2>
-    `);
+  // $('.score').append(`
+  //   <h2>${totalScore}/8<h2>
+  //   `);
 
 
   //submit button
@@ -156,6 +165,7 @@ function handleNextBtn(){
 
 function handleRestart(){
   let percentScore = (totalScore/8) * 100;
+  $('.score').remove();
   $('.feedback').append(`
     <div id="finalScore" class="final">
       <h2 class="final">Congratulations!</h2>
@@ -169,14 +179,16 @@ function handleRestart(){
 
   $('#restart-btn').on('click', function(){
     event.preventDefault();
+    $('.score').empty(' ');
+    $('.feedback').empty(' ');
+    $('.restart-btn').remove();
     handleStartBtn();
-    $('.score').empty(``);
-
     questionCount = 0;
     totalScore = 0;
     console.log(questionCount);
     console.log(totalScore);
   });
+
 
 }
 
