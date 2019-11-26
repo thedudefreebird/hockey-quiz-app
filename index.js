@@ -68,7 +68,10 @@ function handleStartBtn(){
 function handleSetQuestion(){
   if(questionCount < STORE.length){
     $('.score').append(`
-      <h2>${totalScore}/8<h2>
+      <h2>Current Score: ${totalScore}/8<h2>
+      `);
+    $('.questionCount').append(`
+      <h2>Current Question Number: ${questionCount + 1}/8<h2>
       `);
 
     let questionToShow = STORE[questionCount].question;
@@ -109,8 +112,6 @@ function handleSetQuestion(){
 function handleGrading(){
   let userAnswer = $("input[name='answer']:checked").val();
   let correctAnswer = STORE[questionCount].correctAnswer;
-  console.log(correctAnswer);
-  console.log(userAnswer);
 
   if(userAnswer == correctAnswer) {
     $('.feedback').append(`
@@ -122,9 +123,6 @@ function handleGrading(){
       `);
     questionCount++;
     totalScore++;
-    console.log('Correct');
-    console.log(questionCount);
-    console.log(totalScore);
     $('#question').empty('');
     $('#answer-radio').empty('');
 
@@ -134,12 +132,11 @@ function handleGrading(){
       <div id="wrongFeedback" class="wrong">
         <h2 class="wrong">You got the wrong answer!</h2>
         <h2 class="wrong">You'll get it next time!</h2>
+        <h2 class="wrong">The Correct Answer was: ${correctAnswer}</h2>
         <img src="images/ref-calling-pen.jpg" alt="referee calling penalty" class="wrongImage">
       </div>
       `);
       questionCount++;
-      console.log('Wrong');
-      console.log(questionCount);
       $('#question').empty('');
       $('#answer-radio').empty('');
   }
@@ -160,7 +157,7 @@ function handleNextBtn(){
   });
 
   $('.score').empty(``);
-
+  $('.questionCount').empty(``);
 }
 
 function handleRestart(){
@@ -186,8 +183,6 @@ function handleRestart(){
     handleStartBtn();
     questionCount = 0;
     totalScore = 0;
-    console.log(questionCount);
-    console.log(totalScore);
   });
 
 
