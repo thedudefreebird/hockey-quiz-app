@@ -162,7 +162,6 @@ function handleNextBtn(){
 
 function handleRestart(){
   let percentScore = (totalScore/8) * 100;
-  $('.score').remove();
   $('.feedback').append(`
     <div id="finalScore" class="final">
       <h2 class="final">Congratulations!</h2>
