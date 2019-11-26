@@ -42,10 +42,14 @@ body {
 .btn-grid {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+  align-items: flex-start;
+  margin-top: 40px;
   font-size: 25px;
+  align-items: center;
+}
+
+.radioButtons {
+  overflow-wrap: break-word;
 }
 
 .btn {
@@ -69,12 +73,14 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
+  margin-top: .025em;
 }
 
 .questionCount{
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
+  margin-bottom: .025em;
 }
 
 .feedback {
@@ -121,7 +127,7 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .controls {
@@ -134,7 +140,7 @@ body {
     display: none;
 }
 
-/* @media screen and (min-width: 412px) and (max-width: 1000px) {
+@media screen and (min-width: 412px) and (max-width: 900px) {
 
   .container {
     width: 400px;
@@ -206,4 +212,4 @@ body {
       border-radius: 5px;
       padding: 10px;
     }
-} */
+}
