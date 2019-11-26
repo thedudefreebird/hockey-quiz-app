@@ -36,7 +36,7 @@ let STORE = [
   },
   {
     question: 'When a player receives a penalty, where does the player serve his penalty time?',
-    answers: ['The Timeout Seat', 'In The Locker Room', 'On The Bench Next', 'In The Penalty Box'],
+    answers: ['The Timeout Seat', 'In The Locker Room', 'On The Bench', 'In The Penalty Box'],
     correctAnswer: 'In The Penalty Box'
   }
 ];
