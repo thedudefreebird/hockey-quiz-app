@@ -36,7 +36,7 @@ let STORE = [
   },
   {
     question: 'When a player receives a penalty, where does the player serve his penalty time?',
-    answers: ['The Timeout Seat', 'In The Locker Room', 'On The Bench Next To The Coach', 'In The Penalty Box'],
+    answers: ['The Timeout Seat', 'In The Locker Room', 'On The Bench Next', 'In The Penalty Box'],
     correctAnswer: 'In The Penalty Box'
   }
 ];
@@ -78,14 +78,22 @@ function handleSetQuestion(){
     $('#question-container').show();
     $('#question').append(questionToShow);
     $('#answer-radio').append(`
-      <input type="radio" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
-      <label for="answerZero" id="labelZero" class="label">${STORE[questionCount].answers[0]}</label>
-      <input type="radio" name="answer" value="${STORE[questionCount].answers[1]}" id="answerOne">
-      <label for="answerOne" id="labelOne" class="label">${STORE[questionCount].answers[1]}</label>
-      <input type="radio" name="answer" value="${STORE[questionCount].answers[2]}" id="answerTwo">
-      <label for="answerTwo" id="labelTwo" class="label">${STORE[questionCount].answers[2]}</label>
-      <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
-      <label for="answerThree" id="labelThree" class="label">${STORE[questionCount].answers[3]}</label>
+      <div class=radioButtons>
+        <input type="radio" checked="checked" name="answer" value="${STORE[questionCount].answers[0]}" id="answerZero">
+        <label for="answerZero" id="labelZero" class="label">${STORE[questionCount].answers[0]}</label>
+      </div>
+      <div class=radioButtons>
+        <input type="radio" name="answer" value="${STORE[questionCount].answers[1]}" id="answerOne">
+        <label for="answerOne" id="labelOne" class="label">${STORE[questionCount].answers[1]}</label>
+      </div>
+      <div class=radioButtons>
+        <input type="radio" name="answer" value="${STORE[questionCount].answers[2]}" id="answerTwo">
+        <label for="answerTwo" id="labelTwo" class="label">${STORE[questionCount].answers[2]}</label>
+      </div>
+      <div class=radioButtons>
+        <input type="radio" name="answer" value="${STORE[questionCount].answers[3]}" id="answerThree">
+        <label for="answerThree" id="labelThree" class="label">${STORE[questionCount].answers[3]}</label>
+      </div>
       <input type="button" name="submit" value="submit" id="subBtn" class="submit-btn btn"><br>
       `);
   } else {
