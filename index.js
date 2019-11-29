@@ -55,11 +55,6 @@ function handleStartBtn(){
       $('.start-btn').remove();
       $('.intro').empty('');
       handleSetQuestion();
-
-      console.log('Started!');
-      console.log(`Total Score is: ${totalScore}`);
-      console.log(`Current question is: ${questionCount}`);
-
   });
 
 
@@ -100,15 +95,8 @@ function handleSetQuestion(){
     handleRestart();
   };
 
-  // $('.score').append(`
-  //   <h2>${totalScore}/8<h2>
-  //   `);
-
-
-  //submit button
   $('#subBtn').on('click', function(){
     event.preventDefault();
-    console.log('Submit Clikced');
     $('.controls').append(`
       <button id="next-btn" class="next-btn btn">Next</button>
       `);
@@ -153,7 +141,6 @@ function handleGrading(){
 }
 
 function handleNextBtn(){
-  //event listener
   $('#next-btn').on('click', function(){
     event.preventDefault();
     $('#question-container').show();
@@ -198,8 +185,6 @@ function handleRestart(){
 function handleClicks(){
   handleStartBtn();
   handleNextBtn();
-  //handleRestart();
-
 }
 
 $(handleClicks);
