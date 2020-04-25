@@ -38,7 +38,18 @@ let STORE = [
     question: 'When a player receives a penalty, where does the player serve his penalty time?',
     answers: ['The Timeout Seat', 'In The Locker Room', 'On The Bench', 'In The Penalty Box'],
     correctAnswer: 'In The Penalty Box'
+  },
+  {
+    question: 'What is the name of the Trophy that is presented to the Champions?',
+    answers: ['The Prince Of Wales', 'The Stanley Cup', 'Champions Championship', 'The Campbell Trophy'],
+    correctAnswer: 'The Stanley Cup'
+  },
+  {
+    question: 'What is the name of the Trophy given to the team with the most points at the end of the regular season?',
+    answers: ['The Prince Of Wales', 'The Stanley Cup', 'The Presidents Trophy', 'The Campbell Trophy'],
+    correctAnswer: 'The Presidents Trophy'
   }
+  
 ];
 
 let totalScore = 0;
@@ -63,10 +74,10 @@ function handleStartBtn(){
 function handleSetQuestion(){
   if(questionCount < STORE.length){
     $('.score').append(`
-      <h2>Current Score: ${totalScore}/8<h2>
+      <h2>Current Score: ${totalScore}/10<h2>
       `);
     $('.questionCount').append(`
-      <h2>Current Question Number: ${questionCount + 1}/8<h2>
+      <h2>Current Question Number: ${questionCount + 1}/10<h2>
       `);
 
     let questionToShow = STORE[questionCount].question;
@@ -156,11 +167,11 @@ function handleNextBtn(){
 }
 
 function handleRestart(){
-  let percentScore = (totalScore/8) * 100;
+  let percentScore = (totalScore/10) * 100;
   $('.feedback').append(`
     <div id="finalScore" class="final">
       <h2 class="final">Congratulations!</h2>
-      <h2 class="final">Your Final Score is ${totalScore}/8!</h2>
+      <h2 class="final">Your Final Score is ${totalScore}/10!</h2>
       <h2 class="final">Your Shooting Percentage was ${percentScore}%</h2>
       <img class="finalImage" src="images/final-feedback-photo.jpg" alt="USA Womans Hockey team winning Gold by Maddie Meyer">
     </div>
